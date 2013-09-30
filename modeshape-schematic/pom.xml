@@ -11,8 +11,9 @@
     </parent>
 
     <artifactId>modeshape-schematic</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>Schematic API</name>
+    <version>3.5.0.SCDP</version>
     <description>Module for storing JSON/BSON documents and JSON Schemas in Infinispan</description>
     <dependencies>
 
@@ -95,7 +96,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            ${project.groupId}.schematic.*;version=${project.version};-split-package:=error
+                            org.infinispan.schematic*;version=${project.version};-split-package:=error
                         </Export-Package>
                     </instructions>
                 </configuration>
@@ -118,6 +119,15 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>scdp</id>
+            <distributionManagement>
+                <repository>
+                    <id>cdp</id>
+                    <url>http://artifactory.cpr.jet.msk.su:8081/artifactory/libs-release-local</url>
+                </repository>
+            </distributionManagement>
         </profile>
     </profiles>
 </project>
